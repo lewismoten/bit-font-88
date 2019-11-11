@@ -25,7 +25,10 @@ creating a font-drawing app first.
     1. Write all first rows first, then all second rows...
 1. Option to save/load  
 1. Option to apply 2-color palette
-1. Option to show a 40x24 character display area (320x192) where you can click to set the glyph, foreground, and background colors.
+1. Option to only have lower chars (char codes 0-127)
+1. Option to show a 40x24 character display area (320x192)
+  1. Click to set a glyph at a specific position
+  1. 8-bit char painter - click to set foreground/background colors
   1. Option to change number of characters displayed on rows/columns.
   1. Option to load/save display state
 1. Option to create larger glyphs - 16x16, 8x16, etc.

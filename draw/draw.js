@@ -4,14 +4,51 @@
   var systemAsciiTable;
   var lowerAsciiTable;
   var upperAsciiTable;
+  var characterMap;
 
   win.addEventListener("load", startProgram);
 
   function startProgram() {
+
     document.getElementById("resetSampleTextButton").addEventListener("click", resetSampleText);
     resetSampleText();
     setupAsciiTable();
+    characterMap = document.getElementById("characterMap");
+    drawCharacterMap();
     showLower();
+  }
+
+  function drawCharacterMap() {
+    var ctx = characterMap.getContext("2d");
+    // Paint background
+    ctx.fillStyle = "#0000ff";
+    ctx.fillRect(0, 0, characterMap.width, characterMap.height);
+
+    data.chars.forEach(function(charData) {
+      var charCode = charData.code;
+      var col = charCode % 16;
+      var row = (charCode - col) / 16;
+      drawBits(ctx, row * 8, col * 8, charData.bits);
+    });
+
+  }
+
+  function drawBits(ctx, x, y, bytes) {
+    if (bytes === undefined) return;
+    ctx.fillStyle = "#eeeeee";
+    for(var row = 0; row < bytes.length; row++) {
+      // The the byte for the current line
+      var line = bytes[row];
+      for(var col = 0; col < 8; col++) {
+        // Is bit for this column turned on in the line?
+        var drawDot = (line & (1 << (7 - (col - 1)))) > 0;
+        if(drawDot) {
+          // Draw our dot!
+          ctx.fillRect(x + col, y + row, 1,1);
+        }
+      }
+    }
+
   }
 
   function showAscii(visibleTable) {

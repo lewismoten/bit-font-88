@@ -15,3 +15,6 @@ table.hidden {
   text-align: right;
   background-color: #eee;
 }
+canvas {
+  border: 1px solid black;
+}

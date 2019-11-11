@@ -5,6 +5,7 @@
   var lowerAsciiTable;
   var upperAsciiTable;
   var characterMap;
+  var glyph;
 
   win.addEventListener("load", startProgram);
 
@@ -14,8 +15,35 @@
     resetSampleText();
     setupAsciiTable();
     characterMap = document.getElementById("characterMap");
+    characterMap.addEventListener("click", selectGlyph);
+    glyph = document.getElementById("glyph");
     drawCharacterMap();
     showLower();
+  }
+
+  function selectGlyph(mouseEvent) {
+    var x = mouseEvent.offsetX;
+    var y = mouseEvent.offsetY;
+    var col = Math.floor(x / 8);
+    var row = Math.floor(y / 8);
+    var code = (col * 16) + row;
+
+    document.getElementById("glyphCode").innerText = code;
+    document.getElementById("glyphChar").innerText = String.fromCharCode(code);
+    document.getElementById("glyphHex").innerText = "0x" + ('0' + code.toString(16)).slice(-2).toUpperCase();
+    document.getElementById("glyphBin").innerText = "0xb" + ('0000000' + code.toString(2)).slice(-7);
+    document.getElementById("glyphOct").innerText = "0o" + ('00' + code.toString(8)).slice(-3);
+
+    var charData = data.chars.find(function(charData) { return charData.code === code; });
+    var ctx = glyph.getContext("2d");
+    ctx.fillStyle = "#0000ff";
+    ctx.fillRect(0, 0, glyph.width, glyph.height);
+    if (charData) {
+      drawBits(ctx, 0, 0, charData.bits, 8);
+      document.getElementById("glyphName").innerText = charData.name || "";
+      document.getElementById("glyphType").innerText = charData.type || "";
+      document.getElementById("glyphSubType").innerText = charData.subType || "";
+    }
   }
 
   function drawCharacterMap() {
@@ -28,23 +56,27 @@
       var charCode = charData.code;
       var col = charCode % 16;
       var row = (charCode - col) / 16;
+      if (charData.bits.length != 8)  {
+        console.log("byte length bad", charData.name, charData.code, charData.bits);
+      }
       drawBits(ctx, row * 8, col * 8, charData.bits);
     });
 
   }
 
-  function drawBits(ctx, x, y, bytes) {
+  function drawBits(ctx, x, y, bytes, scale) {
     if (bytes === undefined) return;
+    if (scale === undefined) scale = 1;
     ctx.fillStyle = "#eeeeee";
     for(var row = 0; row < bytes.length; row++) {
       // The the byte for the current line
       var line = bytes[row];
       for(var col = 0; col < 8; col++) {
         // Is bit for this column turned on in the line?
-        var drawDot = (line & (1 << (7 - (col - 1)))) > 0;
+        var drawDot = (line & (1 << (6 - (col - 1)))) > 0;
         if(drawDot) {
           // Draw our dot!
-          ctx.fillRect(x + col, y + row, 1,1);
+          ctx.fillRect((x + col) * scale, (y + row) * scale, scale, scale);
         }
       }
     }

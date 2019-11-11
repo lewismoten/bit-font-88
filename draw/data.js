@@ -464,7 +464,7 @@ var data = {
     {
       code: 48,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "zero",
       bits: [
         0b00000000,
@@ -480,7 +480,7 @@ var data = {
     {
       code: 49,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "one",
       bits: [
         0b00000000,
@@ -496,7 +496,7 @@ var data = {
     {
       code: 50,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "two",
       bits: [
         0b00000000,
@@ -512,7 +512,7 @@ var data = {
     {
       code: 51,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "three",
       bits: [
         0b00000000,
@@ -528,7 +528,7 @@ var data = {
     {
       code: 52,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "four",
       bits: [
         0b00000000,
@@ -544,7 +544,7 @@ var data = {
     {
       code: 53,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "five",
       bits: [
         0b00000000,
@@ -560,7 +560,7 @@ var data = {
     {
       code: 54,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "six",
       bits: [
         0b00000000,
@@ -576,7 +576,7 @@ var data = {
     {
       code: 55,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "seven",
       bits: [
         0b00000000,
@@ -592,7 +592,7 @@ var data = {
     {
       code: 56,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "eight",
       bits: [
         0b00000000,
@@ -608,7 +608,7 @@ var data = {
     {
       code: 57,
       type: "printable",
-      subtype: "number",
+      subType: "number",
       name: "nine",
       bits: [
         0b00000000,
@@ -624,7 +624,7 @@ var data = {
     {
       code: 58,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "colon",
       bits: [
         0b00000000,
@@ -640,7 +640,7 @@ var data = {
     {
       code: 59,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "semicolon",
       bits: [
         0b00000000,
@@ -656,7 +656,7 @@ var data = {
     {
       code: 60,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "less-than",
       bits: [
         0b00000000,
@@ -672,7 +672,7 @@ var data = {
     {
       code: 61,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "equals sign",
       bits: [
         0b00000000,
@@ -688,7 +688,7 @@ var data = {
     {
       code: 62,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "greater-than",
       bits: [
         0b00000000,
@@ -704,7 +704,7 @@ var data = {
     {
       code: 63,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "question mark",
       bits: [
         0b00000000,
@@ -720,7 +720,7 @@ var data = {
     {
       code: 64,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "at sign",
       bits: [
         0b00000000,
@@ -736,7 +736,7 @@ var data = {
     {
       code: 65,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "A",
       bits: [
         0b00000000,
@@ -752,7 +752,7 @@ var data = {
     {
       code: 66,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "B",
       bits: [
         0b00000000,
@@ -768,7 +768,7 @@ var data = {
     {
       code: 67,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "C",
       bits: [
         0b00000000,
@@ -784,7 +784,7 @@ var data = {
     {
       code: 68,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "D",
       bits: [
         0b00000000,
@@ -800,7 +800,7 @@ var data = {
     {
       code: 69,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "E",
       bits: [
         0b00000000,
@@ -816,7 +816,7 @@ var data = {
     {
       code: 70,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "F",
       bits: [
         0b00000000,
@@ -832,7 +832,7 @@ var data = {
     {
       code: 71,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "G",
       bits: [
         0b00000000,
@@ -848,7 +848,7 @@ var data = {
     {
       code: 72,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "H",
       bits: [
         0b00000000,
@@ -864,7 +864,7 @@ var data = {
     {
       code: 73,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "I",
       bits: [
         0b00000000,
@@ -880,7 +880,7 @@ var data = {
     {
       code: 74,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "J",
       bits: [
         0b00000000,
@@ -896,7 +896,7 @@ var data = {
     {
       code: 75,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "K",
       bits: [
         0b00000000,
@@ -912,7 +912,7 @@ var data = {
     {
       code: 76,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "L",
       bits: [
         0b00000000,
@@ -928,7 +928,7 @@ var data = {
     {
       code: 77,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "M",
       bits: [
         0b00000000,
@@ -944,7 +944,7 @@ var data = {
     {
       code: 78,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "N",
       bits: [
         0b00000000,
@@ -960,7 +960,7 @@ var data = {
     {
       code: 79,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "O",
       bits: [
         0b00000000,
@@ -976,7 +976,7 @@ var data = {
     {
       code: 80,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "P",
       bits: [
         0b00000000,
@@ -992,7 +992,7 @@ var data = {
     {
       code: 81,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "Q",
       bits: [
         0b00000000,
@@ -1008,7 +1008,7 @@ var data = {
     {
       code: 82,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "R",
       bits: [
         0b00000000,
@@ -1024,7 +1024,7 @@ var data = {
     {
       code: 83,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "S",
       bits: [
         0b00000000,
@@ -1040,7 +1040,7 @@ var data = {
     {
       code: 84,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "T",
       bits: [
         0b00000000,
@@ -1056,7 +1056,7 @@ var data = {
     {
       code: 85,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "U",
       bits: [
         0b00000000,
@@ -1072,7 +1072,7 @@ var data = {
     {
       code: 86,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "V",
       bits: [
         0b00000000,
@@ -1088,7 +1088,7 @@ var data = {
     {
       code: 87,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "W",
       bits: [
         0b00000000,
@@ -1104,7 +1104,7 @@ var data = {
     {
       code: 88,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "X",
       bits: [
         0b00000000,
@@ -1120,7 +1120,7 @@ var data = {
     {
       code: 89,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "Y",
       bits: [
         0b00000000,
@@ -1136,7 +1136,7 @@ var data = {
     {
       code: 90,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "Z",
       bits: [
         0b00000000,
@@ -1152,7 +1152,7 @@ var data = {
     {
       code: 91,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "opening square bracket",
       bits: [
         0b00111000,
@@ -1168,7 +1168,7 @@ var data = {
     {
       code: 92,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "backward slash",
       bits: [
         0b00000000,
@@ -1184,7 +1184,7 @@ var data = {
     {
       code: 93,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "closing square bracket",
       bits: [
         0b00011100,
@@ -1200,7 +1200,7 @@ var data = {
     {
       code: 94,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "carot",
       bits: [
         0b00000000,
@@ -1209,15 +1209,17 @@ var data = {
         0b01000100,
         0b00000000,
         0b00000000,
+        0b00000000,
         0b00000000
       ]
     },
     {
       code: 95,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "underscore",
       bits: [
+        0b00000000,
         0b00000000,
         0b00000000,
         0b00000000,
@@ -1230,7 +1232,7 @@ var data = {
     {
       code: 96,
       type: "printable",
-      subtype: "symbol",
+      subType: "symbol",
       name: "grave accent",
       bits: [
         0b00000000,
@@ -1246,7 +1248,7 @@ var data = {
     {
       code: 97,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "a",
       bits: [
         0b00000000,
@@ -1262,7 +1264,7 @@ var data = {
     {
       code: 98,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "b",
       bits: [
         0b00000000,
@@ -1278,7 +1280,7 @@ var data = {
     {
       code: 99,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "c",
       bits: [
         0b00000000,
@@ -1294,7 +1296,7 @@ var data = {
     {
       code: 100,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "d",
       bits: [
         0b00000000,
@@ -1310,7 +1312,7 @@ var data = {
     {
       code: 101,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "e",
       bits: [
         0b00000000,
@@ -1326,7 +1328,7 @@ var data = {
     {
       code: 102,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "f",
       bits: [
         0b00000000,
@@ -1342,7 +1344,7 @@ var data = {
     {
       code: 103,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "g",
       bits: [
         0b00000000,
@@ -1358,7 +1360,7 @@ var data = {
     {
       code: 104,
       type: "printable",
-      subtype: "letter",
+      subType: "letter",
       name: "h",
       bits: [
         0b00000000,
@@ -1369,6 +1371,22 @@ var data = {
         0b00100010,
         0b00100010,
         0b00000000
+      ]
+    },
+    {
+      code: 126,
+      type: "test",
+      abbr: "test",
+      name: "test",
+      bits: [
+        0b11111111,
+        0b10000001,
+        0b10000001,
+        0b10000001,
+        0b10000001,
+        0b10000001,
+        0b10000001,
+        0b11111111
       ]
     },
     {

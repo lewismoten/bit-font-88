@@ -990,6 +990,244 @@ var data = {
       ]
     },
     {
+      code: 81,
+      type: "printable",
+      subtype: "letter",
+      name: "Q",
+      bits: [
+        0b00000000,
+        0b00111100,
+        0b01000010,
+        0b01000010,
+        0b01001010,
+        0b01000110,
+        0b00111110,
+        0b00000001
+      ]
+    },
+    {
+      code: 82,
+      type: "printable",
+      subtype: "letter",
+      name: "R",
+      bits: [
+        0b00000000,
+        0b01111100,
+        0b01000010,
+        0b01000010,
+        0b01111100,
+        0b01000100,
+        0b01000010,
+        0b00000000
+      ]
+    },
+    {
+      code: 83,
+      type: "printable",
+      subtype: "letter",
+      name: "S",
+      bits: [
+        0b00000000,
+        0b00111100,
+        0b01000010,
+        0b00110000,
+        0b00001100,
+        0b01000010,
+        0b00111100,
+        0b00000000
+      ]
+    },
+    {
+      code: 84,
+      type: "printable",
+      subtype: "letter",
+      name: "T",
+      bits: [
+        0b00000000,
+        0b00111110,
+        0b00001000,
+        0b00001000,
+        0b00001000,
+        0b00001000,
+        0b00001000,
+        0b00000000
+      ]
+    },
+    {
+      code: 85,
+      type: "printable",
+      subtype: "letter",
+      name: "U",
+      bits: [
+        0b00000000,
+        0b01000010,
+        0b01000010,
+        0b01000010,
+        0b01000010,
+        0b01000010,
+        0b00111100,
+        0b00000000
+      ]
+    },
+    {
+      code: 86,
+      type: "printable",
+      subtype: "letter",
+      name: "V",
+      bits: [
+        0b00000000,
+        0b01000010,
+        0b01000010,
+        0b01000010,
+        0b00100100,
+        0b00100100,
+        0b00011000,
+        0b00000000
+      ]
+    },
+    {
+      code: 87,
+      type: "printable",
+      subtype: "letter",
+      name: "W",
+      bits: [
+        0b00000000,
+        0b01000010,
+        0b01000010,
+        0b01000010,
+        0b01011010,
+        0b01100110,
+        0b01000010,
+        0b00000000
+      ]
+    },
+    {
+      code: 88,
+      type: "printable",
+      subtype: "letter",
+      name: "X",
+      bits: [
+        0b00000000,
+        0b01000010,
+        0b00100100,
+        0b00011000,
+        0b00011000,
+        0b00100100,
+        0b01000010,
+        0b00000000
+      ]
+    },
+    {
+      code: 89,
+      type: "printable",
+      subtype: "letter",
+      name: "Y",
+      bits: [
+        0b00000000,
+        0b00100010,
+        0b00100010,
+        0b00010100,
+        0b00001000,
+        0b00001000,
+        0b00001000,
+        0b00000000
+      ]
+    },
+    {
+      code: 90,
+      type: "printable",
+      subtype: "letter",
+      name: "Z",
+      bits: [
+        0b00000000,
+        0b01111110,
+        0b00000100,
+        0b00001000,
+        0b00010000,
+        0b00100000,
+        0b01111110,
+        0b00000000
+      ]
+    },
+    {
+      code: 91,
+      type: "printable",
+      subtype: "symbol",
+      name: "opening square bracket",
+      bits: [
+        0b00111000,
+        0b00100000,
+        0b00100000,
+        0b00100000,
+        0b00100000,
+        0b00100000,
+        0b00100000,
+        0b00111000
+      ]
+    },
+    {
+      code: 92,
+      type: "printable",
+      subtype: "symbol",
+      name: "backward slash",
+      bits: [
+        0b00000000,
+        0b01000000,
+        0b00100000,
+        0b00010000,
+        0b00001000,
+        0b00000100,
+        0b00000010,
+        0b00000000
+      ]
+    },
+    {
+      code: 93,
+      type: "printable",
+      subtype: "symbol",
+      name: "closing square bracket",
+      bits: [
+        0b00011100,
+        0b00000100,
+        0b00000100,
+        0b00000100,
+        0b00000100,
+        0b00000100,
+        0b00000100,
+        0b00011100
+      ]
+    },
+    {
+      code: 94,
+      type: "printable",
+      subtype: "symbol",
+      name: "carot",
+      bits: [
+        0b00000000,
+        0b00010000,
+        0b00101000,
+        0b01000100,
+        0b00000000,
+        0b00000000,
+        0b00000000
+      ]
+    },
+    {
+      code: 95,
+      type: "printable",
+      subtype: "symbol",
+      name: "underscore",
+      bits: [
+        0b00000000,
+        0b00000000,
+        0b00000000,
+        0b00000000,
+        0b00000000,
+        0b00000000,
+        0b11111111
+      ]
+    },
+    {
       code: 127,
       type: "system",
       abbr: "del",

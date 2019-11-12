@@ -19,13 +19,19 @@
     characterMap.addEventListener("click", onClickCharacterMap);
     glyph = document.getElementById("glyph");
     glyph.addEventListener("click", onClickGlyph);
-    drawCharacterMap();
     showLower();
     selectGlyph(0);
+    drawCharacterMap();
   }
 
   function updateFiles() {
-    document.getElementById("jsonFile").value = JSON.stringify(data, null, "  ");
+    document.getElementById("downloadJson").href = "data:," + encodeURIComponent(JSON.stringify(data, null, "  "));
+    var bytes = [];
+    for(var charCode = 0; charCode < 256; charCode++) {
+      charData = getData(charCode);
+      bytes = bytes.concat(charData.bits);
+    }
+    document.getElementById("downloadBinary").href = "data:," + bytes.map(toURI).join("");
   }
 
   function onClickCharacterMap(mouseEvent) {
@@ -54,7 +60,7 @@
   }
 
   function getData(code) {
-    var charData = data.chars.find(function(charData) { return charData.code === selectedCode; });
+    var charData = data.chars.find(function(charData) { return charData.code === code; });
     if (!charData) {
       charData = {
         code: code,
@@ -103,6 +109,9 @@
     }
   }
 
+  function toURI(value) {
+    return "%" + toHex(value);
+  }
   function toHexL(value) {
     return "0x" + toHex(value);
   }
@@ -123,9 +132,6 @@
       var charCode = charData.code;
       var col = charCode % 16;
       var row = (charCode - col) / 16;
-      if (charData.bits.length != 8)  {
-        console.log("byte length bad", charData.name, charData.code, charData.bits);
-      }
       drawBits(ctx, row * 8, col * 8, charData.bits);
     });
 

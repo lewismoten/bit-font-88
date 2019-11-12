@@ -258,7 +258,12 @@
       "abcdefghijklmnopqrstuvwxyz",
       "1234567890  +=!@#$%^&*",
       "_-\\|;:?/.,~  \'\"\`",
-      "<> [] {} ()"
+      "<> [] {} ()",
+      "",
+      "function valueOf(text) {",
+      "  var y = 1;",
+      "  return y ^ text.charCodeAt(3);",
+      "}"
     ].join("\n");
     sampleText.value = text;
     drawSampleOutput();

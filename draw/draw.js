@@ -24,6 +24,10 @@
     selectGlyph(0);
   }
 
+  function updateFiles() {
+    document.getElementById("jsonFile").value = JSON.stringify(data, null, "  ");
+  }
+
   function onClickCharacterMap(mouseEvent) {
     var x = mouseEvent.offsetX;
     var y = mouseEvent.offsetY;
@@ -109,6 +113,7 @@
      return ('0000000' + value.toString(2)).slice(-8);
   }
   function drawCharacterMap() {
+    updateFiles();
     var ctx = characterMap.getContext("2d");
     // Paint background
     ctx.fillStyle = "#0000ff";

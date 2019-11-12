@@ -1,6 +1,4 @@
 
-var LINE_BLANK = 0b00000000;
-var CHAR_EMPTY = [LINE_BLANK, LINE_BLANK, LINE_BLANK, LINE_BLANK, LINE_BLANK, LINE_BLANK, LINE_BLANK, LINE_BLANK]
 
 var data = {
   width: 8,
@@ -11,230 +9,230 @@ var data = {
       type: "system",
       abbr: "nul",
       name: "null",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 1,
       type: "system",
       abbr: "som",
       name: "start of heading",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 2,
       type: "system",
       abbr: "stx",
       name: "start of text",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 3,
       type: "system",
       abbr: "etx",
       name: "end of text",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 4,
       type: "system",
       abbr: "eot",
       name: "end of transmission",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 5,
       type: "system",
       abbr: "enq",
       name: "enquery",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 6,
       type: "system",
       abbr: "ack",
       name: "acknowledgement",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 7,
       type: "system",
       abbr: "bel",
       name: "bell",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 8,
       type: "system",
       abbr: "bs",
       name: "backspace",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 9,
       type: "system",
       abbr: "ht",
       name: "horizontal tab",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 10,
       type: "system",
       abbr: "lf",
       name: "line feed",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 11,
       type: "system",
       abbr: "vt",
       name: "vertical tab",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 12,
       type: "system",
       abbr: "ff",
       name: "form feed",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 13,
       type: "system",
       abbr: "cr",
       name: "carriage return",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 14,
       type: "system",
       abbr: "so",
       name: "shift out",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 15,
       type: "system",
       abbr: "si",
       name: "shift in",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 16,
       type: "system",
       abbr: "dle",
       name: "data link escape",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 17,
       type: "system",
       abbr: "dc1",
       name: "device control 1 (xon)",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 18,
       type: "system",
       abbr: "dc2",
       name: "device control 2",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 19,
       type: "system",
       abbr: "dc3",
       name: "device control 3 (off)",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 20,
       type: "system",
       abbr: "dc3",
       name: "device control 4",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 21,
       type: "system",
       abbr: "nak",
       name: "negative acknoledgement",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 22,
       type: "system",
       abbr: "syn",
       name: "synchronous idle",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 23,
       type: "system",
       abbr: "etb",
       name: "end of transmission block",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 24,
       type: "system",
       abbr: "can",
       name: "cancel",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 25,
       type: "system",
       abbr: "em",
       name: "end of medium",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 26,
       type: "system",
       abbr: "sub",
       name: "substitute",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 27,
       type: "system",
       abbr: "esc",
       name: "escape",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 28,
       type: "system",
       abbr: "fs",
       name: "file separator",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 29,
       type: "system",
       abbr: "gs",
       name: "group separator",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 30,
       type: "system",
       abbr: "rs",
       name: "record separator",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 31,
       type: "system",
       abbr: "us",
       name: "unit separator",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 32,
       type: "printable",
       name: "space",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     },
     {
       code: 33,
@@ -1374,19 +1372,201 @@ var data = {
       ]
     },
     {
-      code: 126,
-      type: "test",
-      abbr: "test",
-      name: "test",
+      code: 105,
+      type: "printable",
+      subType: "letter",
+      name: "i",
       bits: [
-        0b11111111,
-        0b10000001,
-        0b10000001,
-        0b10000001,
-        0b10000001,
-        0b10000001,
-        0b10000001,
-        0b11111111
+      0x00, 0x00, 0x08, 0x00, 0x08, 0x08, 0x08, 0x00
+      ]
+    },
+    {
+      code: 106,
+      type: "printable",
+      subType: "letter",
+      name: "j",
+      bits: [
+    0x00, 0x00, 0x08, 0x00, 0x08, 0x08, 0x48, 0x30
+      ]
+    },
+    {
+      code: 107,
+      type: "printable",
+      subType: "letter",
+      name: "k",
+      bits: [
+    0x00, 0x40, 0x40, 0x50, 0x60, 0x60, 0x50, 0x00
+      ]
+    },
+    {
+      code: 108,
+      type: "printable",
+      subType: "letter",
+      name: "l",
+      bits: [
+    0x00, 0x30, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00
+      ]
+    },
+    {
+      code: 109,
+      type: "printable",
+      subType: "letter",
+      name: "m",
+      bits: [
+    0x00, 0x00, 0x00, 0x00, 0x6C, 0x52, 0x52, 0x00
+      ]
+    },
+    {
+      code: 110,
+      type: "printable",
+      subType: "letter",
+      name: "n",
+      bits: [
+    0x00, 0x00, 0x00, 0x58, 0x64, 0x44, 0x44, 0x00
+      ]
+    },
+    {
+      code: 111,
+      type: "printable",
+      subType: "letter",
+      name: "o",
+      bits: [
+    0x00, 0x00, 0x00, 0x38, 0x44, 0x44, 0x38, 0x00
+      ]
+    },
+    {
+      code: 112,
+      type: "printable",
+      subType: "letter",
+      name: "p",
+      bits: [
+    0x00, 0x00, 0x38, 0x44, 0x44, 0x78, 0x40, 0x40
+      ]
+    },
+    {
+      code: 113,
+      type: "printable",
+      subType: "letter",
+      name: "q",
+      bits: [
+    0x00, 0x00, 0x3C, 0x44, 0x44, 0x3C, 0x04, 0x06
+      ]
+    },
+    {
+      code: 114,
+      type: "printable",
+      subType: "letter",
+      name: "r",
+      bits: [
+    0x00, 0x00, 0x00, 0x58, 0x60, 0x40, 0x40, 0x00
+      ]
+    },
+    {
+      code: 115,
+      type: "printable",
+      subType: "letter",
+      name: "s",
+      bits: [
+    0x00, 0x00, 0x1C, 0x20, 0x18, 0x04, 0x38, 0x00
+      ]
+    },
+    {
+      code: 116,
+      type: "printable",
+      subType: "letter",
+      name: "t",
+      bits: [
+    0x00, 0x20, 0x20, 0x70, 0x20, 0x20, 0x10, 0x00
+      ]
+    },
+    {
+      code: 117,
+      type: "printable",
+      subType: "letter",
+      name: "u",
+      bits: [
+    0x00, 0x00, 0x44, 0x44, 0x44, 0x44, 0x3A, 0x00
+      ]
+    },
+    {
+      code: 118,
+      type: "printable",
+      subType: "letter",
+      name: "v",
+      bits: [
+    0x00, 0x00, 0x44, 0x44, 0x44, 0x28, 0x10, 0x00
+      ]
+    },
+    {
+      code: 119,
+      type: "printable",
+      subType: "letter",
+      name: "w",
+      bits: [
+    0x00, 0x00, 0x42, 0x42, 0x4A, 0x4A, 0x34, 0x00
+      ]
+    },
+    {
+      code: 120,
+      type: "printable",
+      subType: "letter",
+      name: "x",
+      bits: [
+    0x00, 0x00, 0x44, 0x28, 0x10, 0x28, 0x44, 0x00
+      ]
+    },
+    {
+      code: 121,
+      type: "printable",
+      subType: "letter",
+      name: "y",
+      bits: [
+    0x00, 0x00, 0x44, 0x44, 0x44, 0x3C, 0x04, 0x78
+      ]
+    },
+    {
+      code: 122,
+      type: "printable",
+      subType: "letter",
+      name: "z",
+      bits: [
+    0x00, 0x00, 0x7C, 0x08, 0x10, 0x20, 0x7C, 0x00
+      ]
+    },
+    {
+      code: 123,
+      type: "printable",
+      subType: "symbol",
+      name: "opening french bracket",
+      bits: [
+    0x10, 0x20, 0x20, 0x20, 0x60, 0x20, 0x20, 0x10
+      ]
+    },
+    {
+      code: 124,
+      type: "printable",
+      subType: "symbol",
+      name: "vertical bar",
+      bits: [
+    0x00, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x00
+      ]
+    },
+    {
+      code: 125,
+      type: "printable",
+      subType: "symbol",
+      name: "closing french bracket",
+      bits: [
+    0x08, 0x04, 0x04, 0x04, 0x06, 0x04, 0x04, 0x08
+      ]
+    },
+    {
+      code: 126,
+      type: "printable",
+      subType: "symbol",
+      name: "~",
+      bits: [
+    0x00, 0x00, 0x00, 0x00, 0x34, 0x48, 0x00, 0x00
       ]
     },
     {
@@ -1394,7 +1574,7 @@ var data = {
       type: "system",
       abbr: "del",
       name: "delete",
-      bits: CHAR_EMPTY
+      bits: [0,0,0,0,0,0,0,0]
     }
   ]
 }

@@ -6,6 +6,7 @@
   var upperAsciiTable;
   var characterMap;
   var glyph;
+  var selectedCode = 0;
 
   win.addEventListener("load", startProgram);
 
@@ -15,37 +16,98 @@
     resetSampleText();
     setupAsciiTable();
     characterMap = document.getElementById("characterMap");
-    characterMap.addEventListener("click", selectGlyph);
+    characterMap.addEventListener("click", onClickCharacterMap);
     glyph = document.getElementById("glyph");
+    glyph.addEventListener("click", onClickGlyph);
     drawCharacterMap();
     showLower();
+    selectGlyph(0);
   }
 
-  function selectGlyph(mouseEvent) {
+  function onClickCharacterMap(mouseEvent) {
     var x = mouseEvent.offsetX;
     var y = mouseEvent.offsetY;
     var col = Math.floor(x / 8);
     var row = Math.floor(y / 8);
     var code = (col * 16) + row;
+    selectGlyph(code);
+  }
 
-    document.getElementById("glyphCode").innerText = code;
-    document.getElementById("glyphChar").innerText = String.fromCharCode(code);
-    document.getElementById("glyphHex").innerText = "0x" + ('0' + code.toString(16)).slice(-2).toUpperCase();
-    document.getElementById("glyphBin").innerText = "0xb" + ('0000000' + code.toString(2)).slice(-7);
-    document.getElementById("glyphOct").innerText = "0o" + ('00' + code.toString(8)).slice(-3);
+  function onClickGlyph(mouseEvent) {
+    var x = mouseEvent.offsetX;
+    var y = mouseEvent.offsetY;
+    var col = Math.floor(x / 8);
+    var row = Math.floor(y / 8);
+    var charData = getData(selectedCode);
+    charData.bits[row] = toggleBit(charData.bits[row], col);
+    drawGlyph(selectedCode);
+    drawCharacterMap();
+  }
 
-    var charData = data.chars.find(function(charData) { return charData.code === code; });
+  function toggleBit(byte, position) {
+    var mask = 1 << (7 - position);
+    return byte ^ mask;
+  }
+
+  function getData(code) {
+    var charData = data.chars.find(function(charData) { return charData.code === selectedCode; });
+    if (!charData) {
+      charData = {
+        code: code,
+        bits: [0,0,0,0,0,0,0,0]
+      };
+      data.chars.push(charData);
+    }
+    if (!charData.bits) {
+      charData.bits = [0,0,0,0,0,0,0,0];
+    }
+    return charData;
+  }
+  function drawGlyph(code) {
+    var charData = getData(code);
+    var bytes = charData.bits;
+
     var ctx = glyph.getContext("2d");
     ctx.fillStyle = "#0000ff";
     ctx.fillRect(0, 0, glyph.width, glyph.height);
+    drawBits(ctx, 0, 0, bytes, 8);
+
+    document.getElementById("glyphDataBytes").value = bytes;
+    document.getElementById("glyphDataHex").value = bytes.map(toHexL).join(", ");
+    document.getElementById("glyphDataBits").value = bytes.map(toBits).join("\r\n");
+  }
+
+  function selectGlyph(code) {
+    selectedCode = code;
+
+    document.getElementById("glyphCode").innerText = code;
+    document.getElementById("glyphChar").innerText = String.fromCharCode(code);
+    document.getElementById("glyphHex").innerText = toHex(code);
+    document.getElementById("glyphBin").innerText = toBits(code);
+    document.getElementById("glyphOct").innerText = ('00' + code.toString(8)).slice(-3);
+
+    var charData = getData(code);
+    drawGlyph(code);
     if (charData) {
-      drawBits(ctx, 0, 0, charData.bits, 8);
       document.getElementById("glyphName").innerText = charData.name || "";
       document.getElementById("glyphType").innerText = charData.type || "";
       document.getElementById("glyphSubType").innerText = charData.subType || "";
+    } else {
+      document.getElementById("glyphName").innerText = "";
+      document.getElementById("glyphType").innerText = "";
+      document.getElementById("glyphSubType").innerText = "";
     }
   }
 
+  function toHexL(value) {
+    return "0x" + toHex(value);
+  }
+  function toHex(value) {
+    return ('0' + value.toString(16)).slice(-2).toUpperCase();
+  }
+  function toBits(value) {
+     return ('0000000' + value.toString(2)).slice(-8);
+  }
   function drawCharacterMap() {
     var ctx = characterMap.getContext("2d");
     // Paint background
@@ -142,8 +204,8 @@
   function addAsciiCells(array, charCode) {
     array.push(String.fromCharCode(charCode));
     array.push(charCode);
-    array.push("0x" + ('0' + charCode.toString(16)).slice(-2).toUpperCase());
-    array.push(('0000000' + charCode.toString(2)).slice(-8));
+    array.push(toHex(charCode));
+    array.push(toBits(charCode));
 
   }
 

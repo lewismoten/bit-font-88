@@ -4,6 +4,13 @@
   var characterMap;
   var glyph;
   var selectedCode = 0;
+  var characterMapScale = 2;
+  var glyphScale = 16;
+  var gridColumns = 16;
+  var gridRows = 16;
+  var glyphWidth = 8;
+  var glyphHeight = 8;
+  var glyphCount = 256;
 
   win.addEventListener("load", startProgram);
 
@@ -12,8 +19,12 @@
     document.getElementById("resetSampleTextButton").addEventListener("click", resetSampleText);
     resetSampleText();
     characterMap = document.getElementById("characterMap");
+    characterMap.width = gridColumns * glyphWidth * characterMapScale;
+    characterMap.height = gridRows * glyphHeight * characterMapScale;
     characterMap.addEventListener("click", onClickCharacterMap);
     glyph = document.getElementById("glyph");
+    glyph.width = glyphWidth * glyphScale;
+    glyph.height = glyphHeight * glyphScale;
     glyph.addEventListener("click", onClickGlyph);
     selectGlyph(0);
     drawCharacterMap();
@@ -22,27 +33,38 @@
   function updateFiles() {
     document.getElementById("downloadJson").href = "data:," + encodeURIComponent(JSON.stringify(data, null, "  "));
     var bytes = [];
-    for(var charCode = 0; charCode < 256; charCode++) {
-      charData = getData(charCode);
+    for(var index = 0; index < glyphCount; index++) {
+      charData = getData(index);
       bytes = bytes.concat(charData.bits);
     }
     document.getElementById("downloadBinary").href = "data:," + bytes.map(toURI).join("");
   }
 
+  function getIndex(column, row) {
+    return (column * gridRows) + row;
+  }
+  function getCell(index) {
+
+    var row = index % gridRows;
+    var column = (index - row) / gridRows;
+    return { column: column, row: row };
+  }
   function onClickCharacterMap(mouseEvent) {
     var x = mouseEvent.offsetX;
     var y = mouseEvent.offsetY;
-    var col = Math.floor(x / 8);
-    var row = Math.floor(y / 8);
-    var code = (col * 16) + row;
-    selectGlyph(code);
+    var col = Math.floor(x / (glyphWidth * characterMapScale));
+    var row = Math.floor(y / (glyphHeight * characterMapScale));
+    var index = getIndex(col, row);
+    selectGlyph(index);
   }
 
   function onClickGlyph(mouseEvent) {
     var x = mouseEvent.offsetX;
     var y = mouseEvent.offsetY;
-    var col = Math.floor(x / 8);
-    var row = Math.floor(y / 8);
+    var col = Math.floor(x / glyphScale);
+    var row = Math.floor(y / glyphScale);
+    if (col >= glyphWidth) col = glyphWidth - 1;
+    if (row >= glyphHeight) row = glyphHeight - 1;
     var charData = getData(selectedCode);
     charData.bits[row] = toggleBit(charData.bits[row], col);
     drawGlyph(selectedCode);
@@ -59,27 +81,29 @@
     if (!charData) {
       charData = {
         code: code,
-        bits: [0,0,0,0,0,0,0,0]
+        bits: []
       };
       data.chars.push(charData);
     }
     if (!charData.bits) {
-      charData.bits = [0,0,0,0,0,0,0,0];
+      charData.bits = [];
+    }
+    while(charData.bits.length < glyphHeight) {
+      charData.bits.push(0);
     }
     return charData;
   }
-  function drawGlyph(code) {
-    var charData = getData(code);
+  function drawGlyph(index) {
+    var charData = getData(index);
     var bytes = charData.bits;
 
     var ctx = glyph.getContext("2d");
     ctx.fillStyle = "#0000ff";
     ctx.fillRect(0, 0, glyph.width, glyph.height);
-    drawBits(ctx, 0, 0, bytes, 8);
+    drawBits(ctx, 0, 0, bytes, glyphScale);
 
     document.getElementById("glyphDataBytes").value = bytes;
     document.getElementById("glyphDataHex").value = bytes.map(toHexL).join(", ");
-    document.getElementById("glyphDataBits").value = bytes.map(toBits).join("\r\n");
   }
 
   function selectGlyph(code) {
@@ -89,7 +113,7 @@
     document.getElementById("glyphChar").innerText = String.fromCharCode(code);
     document.getElementById("glyphHex").innerText = toHex(code);
     document.getElementById("glyphBin").innerText = toBits(code);
-    document.getElementById("glyphOct").innerText = ('00' + code.toString(8)).slice(-3);
+    document.getElementById("glyphOct").innerText = toOct(code);
 
     var charData = getData(code);
     drawGlyph(code);
@@ -113,6 +137,9 @@
   function toHex(value) {
     return ('0' + value.toString(16)).slice(-2).toUpperCase();
   }
+  function toOct(value) {
+    return ('00' + value.toString(8)).slice(-3);
+  }
   function toBits(value) {
      return ('0000000' + value.toString(2)).slice(-8);
   }
@@ -124,10 +151,8 @@
     ctx.fillRect(0, 0, characterMap.width, characterMap.height);
 
     data.chars.forEach(function(charData) {
-      var charCode = charData.code;
-      var col = charCode % 16;
-      var row = (charCode - col) / 16;
-      drawBits(ctx, row * 8, col * 8, charData.bits);
+      var cell = getCell(charData.code);
+      drawBits(ctx, cell.column * glyphWidth, cell.row * glyphHeight, charData.bits, characterMapScale);
     });
 
   }
@@ -136,10 +161,10 @@
     if (bytes === undefined) return;
     if (scale === undefined) scale = 1;
     ctx.fillStyle = "#eeeeee";
-    for(var row = 0; row < bytes.length; row++) {
+    for(var row = 0; row < glyphHeight; row++) {
       // The the byte for the current line
       var line = bytes[row];
-      for(var col = 0; col < 8; col++) {
+      for(var col = 0; col < glyphWidth; col++) {
         // Is bit for this column turned on in the line?
         var drawDot = (line & (1 << (6 - (col - 1)))) > 0;
         if(drawDot) {

@@ -7,7 +7,7 @@
   var gridRows = 16;
 
   var glyph;
-  var glyphScale = 16;
+  var glyphScale = 32;
   var glyphWidth = 8;
   var glyphHeight = 8;
   var glyphCount = 256;

@@ -9,30 +9,71 @@
     <noscript>
       JavaScript is required to be enabled.
     </noscript>
-    Screeen<br>
-    <canvas id="sampleOutput" width="128" height="128"></canvas><br>
-
-    Sample Text: <input type="button" id="resetSampleTextButton" value="Reset" /><br />
-    <textarea cols="40" rows="8" id="sampleText">
-    </textarea>
-    <br>
-    8-Bit Character Map<br>
-    <canvas id="characterMap" width="128" height="128"></canvas>
-    <br>
-    Glyph<br>
-    <canvas id="glyph" width="64" height="64"></canvas><br>
-    Code: <span id="glyphCode"></span><br>
-    Name: <span id="glyphName"></span><br>
-    Char: <span id="glyphChar"></span><br>
-    Type: <span id="glyphType"></span><br>
-    SubType: <span id="glyphSubType"></span><br>
-    Hex: <span id="glyphHex"></span><br>
-    Bin: <span id="glyphBin"></span><br>
-    Oct: <span id="glyphOct"></span><br>
-    Data Bytes: <input id="glyphDataBytes" size="40"><br>
-    Data Hex: <input id="glyphDataHex" size="40"><br>
-    <br>
+    <table>
+      <tr>
+        <td>8-Bit Character map</td>
+        <td>Glyph</td>
+        <td colspan="2">Details</td>
+      </tr>
+      <tr>
+        <td rowspan="22"><canvas id="characterMap"></canvas></td>
+        <td rowspan="22"><canvas id="glyph"></canvas></td>
+        <td>Index</td>
+        <td><span id="glyphCode"></span></td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td><span id="glyphName"></span></td>
+      </tr>
+      <tr>
+        <td>ASCII Character</td>
+        <td><span id="glyphChar"></span></td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td><span id="glyphType"></span></td>
+      </tr>
+      <tr>
+        <td>Sub-Type</td>
+        <td><span id="glyphSubType"></span></td>
+      </tr>
+      <tr>
+        <td>Hex</td>
+        <td><span id="glyphHex"></span></td>
+      </tr>
+      <tr>
+        <td>Bin</td>
+        <td><span id="glyphBin"></span></td>
+      </tr>
+      <tr>
+        <td>Oct</td>
+        <td><span id="glyphOct"></span></td>
+      </tr>
+      <tr>
+        <td>Bytes</td>
+        <td><input id="glyphDataBytes" size="40"></td>
+      </tr>
+      <tr>
+        <td>Hex Dump</td>
+        <td><input id="glyphDataHex" size="40"></td>
+      </tr>
+    </table>
     Download: <a download="8-bit-ascii.json.txt" id="downloadJson">JSON</a>
     <a download="8-bit-ascii.bin.txt" id="downloadBinary">Binary</a><br>
+    <table>
+      <tr>
+        <td>Screen</td>
+        <td>Sample Text</td>
+      </tr>
+      <tr>
+        <td><canvas id="sampleOutput"></canvas></td>
+        <td>
+          <textarea cols="40" rows="8" id="sampleText"></textarea><br><br>
+          <input type="button" id="resetSampleTextButton" value="Reset" />
+        </td>
+      </tr>
+    </table>
+
+    <br>
   </body>
 </html>

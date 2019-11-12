@@ -1,19 +1,5 @@
-table.visible, table.visible th, table.visible td {
-  display: init;
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-table.hidden {
-  display: none;
-}
-
-.char-char {
-  text-align: center;
-}
-.char-code, .char-hex, .char-binary {
-  text-align: right;
-  background-color: #eee;
+td {
+  vertical-align: top;
 }
 canvas {
   border: 1px solid black;

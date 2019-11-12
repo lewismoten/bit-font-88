@@ -252,6 +252,8 @@
   function resetSampleText() {
     var text = [
       "The quick brown fox jumped over the lazy dog.",
+      "AaBbCcDdEeFfGgHhIiJjKkLlMm",
+      "NnOoPpQqRrSsTtUuVvWwXxYyZz",
       "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
       "abcdefghijklmnopqrstuvwxyz",
       "1234567890  +=!@#$%^&*",

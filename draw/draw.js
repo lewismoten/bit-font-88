@@ -1,9 +1,6 @@
 
 (function(win) {
 
-  var systemAsciiTable;
-  var lowerAsciiTable;
-  var upperAsciiTable;
   var characterMap;
   var glyph;
   var selectedCode = 0;
@@ -14,12 +11,10 @@
 
     document.getElementById("resetSampleTextButton").addEventListener("click", resetSampleText);
     resetSampleText();
-    setupAsciiTable();
     characterMap = document.getElementById("characterMap");
     characterMap.addEventListener("click", onClickCharacterMap);
     glyph = document.getElementById("glyph");
     glyph.addEventListener("click", onClickGlyph);
-    showLower();
     selectGlyph(0);
     drawCharacterMap();
   }
@@ -154,92 +149,6 @@
       }
     }
 
-  }
-
-  function showAscii(visibleTable) {
-    [systemAsciiTable, lowerAsciiTable, upperAsciiTable].forEach(show);
-    function show(table) {
-      table.className = table === visibleTable ? "visible" : "hidden";
-    }
-  }
-  function showLower() {
-    showAscii(lowerAsciiTable);
-  }
-  function showUpper() {
-    showAscii(upperAsciiTable);
-  }
-  function showSystem() {
-    showAscii(systemAsciiTable);
-  }
-
-  function setupAsciiTable() {
-    document.getElementById("systemAsciiButton").addEventListener("click", showSystem);
-    document.getElementById("lowerAsciiButton").addEventListener("click", showLower);
-    document.getElementById("upperAsciiButton").addEventListener("click", showUpper);
-
-    systemAsciiTable = document.getElementById("systemAsciiTable");
-    lowerAsciiTable = document.getElementById("lowerAsciiTable");
-    upperAsciiTable = document.getElementById("upperAsciiTable");
-
-    var headers = ["Char", "Code", "Hex", "Binary"];
-    var classes = ["char-char", "char-code", "char-hex", "char-binary"];
-
-    addTableRow(systemAsciiTable, repeatedArrayValues(headers, 2), repeatedArrayValues(classes, 2))
-    addTableRow(lowerAsciiTable, repeatedArrayValues(headers, 6), repeatedArrayValues(classes, 6));
-    addTableRow(upperAsciiTable, repeatedArrayValues(headers, 8), repeatedArrayValues(classes, 8));
-
-    // build out each row
-    for(var row = 0; row < 16; row++) {
-      var lowerValues = [];
-      var upperValues = [];
-      var systemValues = [];
-      // Loop through the columns in that row
-      for (var col = 0; col < 16; col++) {
-        var charCode = (col * 16) + row;
-
-        if (col < 2) {
-          addAsciiCells(systemValues, charCode);
-        } else if (col < 8) {
-          addAsciiCells(lowerValues, charCode);
-        } else {
-          addAsciiCells(upperValues, charCode);
-        }
-      }
-      // Add row to AsciiTable
-      addTableRow(systemAsciiTable, systemValues, repeatedArrayValues(classes, 2));
-      addTableRow(lowerAsciiTable, lowerValues, repeatedArrayValues(classes, 6));
-      addTableRow(upperAsciiTable, upperValues, repeatedArrayValues(classes, 8));
-    }
-  }
-
-  function addAsciiCells(array, charCode) {
-    array.push(String.fromCharCode(charCode));
-    array.push(charCode);
-    array.push(toHex(charCode));
-    array.push(toBits(charCode));
-
-  }
-
-  function repeatedArrayValues(values, count) {
-    var a = [];
-    for(var i = 0; i < count; i++) {
-      for (var j = 0; j < values.length; j++) {
-        a.push(values[j]);
-      }
-    }
-    return a;
-  }
-
-  function addTableRow(table, cells, classes) {
-    var row = document.createElement("tr");
-    table.appendChild(row);
-    for(var i = 0; i < cells.length; i++) {
-      var cell = document.createElement("td");
-      cell.className = classes[i];
-      cell.innerText = cells[i];
-      row.appendChild(cell);
-    }
-    return row;
   }
 
   function resetSampleText() {

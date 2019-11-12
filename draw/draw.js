@@ -2,22 +2,36 @@
 (function(win) {
 
   var characterMap;
-  var glyph;
-  var selectedCode = 0;
   var characterMapScale = 2;
-  var glyphScale = 16;
   var gridColumns = 16;
   var gridRows = 16;
+
+  var glyph;
+  var glyphScale = 16;
   var glyphWidth = 8;
   var glyphHeight = 8;
   var glyphCount = 256;
+
+  var sampleOutput;
+  var sampleOutputColumns = 40;
+  var sampleOutputRows = 24;
+  var sampleOutputScale = 2;
+
+  var sampleText;
+
+  var selectedCode = 0;
 
   win.addEventListener("load", startProgram);
 
   function startProgram() {
 
     document.getElementById("resetSampleTextButton").addEventListener("click", resetSampleText);
-    resetSampleText();
+    sampleText = document.getElementById("sampleText");
+    sampleText.addEventListener("keyup", drawSampleOutput)
+
+    sampleOutput = document.getElementById("sampleOutput");
+    sampleOutput.width = sampleOutputColumns * glyphWidth * sampleOutputScale;
+    sampleOutput.height = sampleOutputRows * glyphHeight * sampleOutputScale;
     characterMap = document.getElementById("characterMap");
     characterMap.width = gridColumns * glyphWidth * characterMapScale;
     characterMap.height = gridRows * glyphHeight * characterMapScale;
@@ -28,6 +42,64 @@
     glyph.addEventListener("click", onClickGlyph);
     selectGlyph(0);
     drawCharacterMap();
+    resetSampleText();
+  }
+
+  function drawSampleOutput() {
+    var text = sampleText.value;
+
+    var column = 0;
+    var row = 0;
+    var lines = [];
+    var line = "";
+
+    // parse to lines with wrapping
+    for(var i = 0; i < text.length; i++) {
+      var charCode = text.charCodeAt(i);
+      switch(charCode) {
+        case 10: // line feed
+          lines.push(line);
+          line = "";
+          row++;
+          column = 0;
+          break;
+        case 13: // carriage return
+        lines.push(line);
+        line = "";
+        row++;
+        column = 0;
+        break;
+        default:
+          if (column >= sampleOutputColumns) {
+            lines.push(line);
+            line = text[i];
+            column = 1;
+          } else {
+            column++;
+            line += text[i];
+          }
+      }
+    }
+    if(line !== "")
+      lines.push(line);
+
+    // remove lines out of sight (scrolling down...)
+    while(lines.length > sampleOutputRows) {
+      lines.shift();
+    }
+    var ctx = sampleOutput.getContext("2d");
+    ctx.fillStyle = "#0000ff";
+    ctx.fillRect(0, 0, sampleOutput.width, sampleOutput.height);
+
+    for(var row = 0; row < lines.length; row++) {
+      var line = lines[row];
+      for(column = 0; column < line.length; column++) {
+        var index = line.charCodeAt(column);
+        var charData = getData(index);
+        var bytes = charData.bits;
+        drawBits(ctx, column * glyphWidth, row * glyphHeight, bytes, sampleOutputScale);
+      }
+    };
   }
 
   function updateFiles() {
@@ -69,6 +141,7 @@
     charData.bits[row] = toggleBit(charData.bits[row], col);
     drawGlyph(selectedCode);
     drawCharacterMap();
+    drawSampleOutput();
   }
 
   function toggleBit(byte, position) {
@@ -185,7 +258,8 @@
       "_-\\|;:?/.,~  \'\"\`",
       "<> [] {} ()"
     ].join("\n");
-    document.getElementById("sampleText").value = text;
+    sampleText.value = text;
+    drawSampleOutput();
   }
 
 })(this)

@@ -1,3 +1,5 @@
+![bit-font-88: 8x8 monochrome pixel font](docs/images/social-preview.png)
+
 # bit-font-88
 
 A pixelated monochrome 8x8 font.
